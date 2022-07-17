@@ -1,14 +1,19 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 
 export function Login(){
     const navigate = useNavigate();
+
+    const [email, setEmail] =useState('');
+    const [password, setPassword] =useState('');
     
     function handleClick(){
         navigate("/");
     }
 
     function handleLogin(){
-        navigate("*")
+        console.log(email, password);
+        //navigate("");
     }
 
     return(
@@ -17,11 +22,11 @@ export function Login(){
 
             <form>
                 <label>E-mail
-                    <input id="email" type="email" />
+                    <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
                 </label>
 
                 <label>Senha
-                    <input id="password" type="password" />
+                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
                 </label>
                 
                 <button type="button" onClick={handleLogin}>Efetuar Login</button>
